@@ -1,7 +1,38 @@
 
 
+$(document).ready(function(){
+  init();
+
+
+
+});
 
 var paletteArray = [];
+
+
+function displayPalettes(arr){
+
+  for(var i=0; i<arr.length; i++){
+
+
+
+
+
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 function loadData() {
 
@@ -10,7 +41,7 @@ function loadData() {
         function(data) {
             console.log(data);
 
-            for(var i = 0; i< data.length; i++){
+            for(var i = 0; i < 5; i++){
                 if(data[i].hasOwnProperty('colors')){
                     paletteArray.push(data[i].colors)
                 }
@@ -19,14 +50,21 @@ function loadData() {
         }
     );
 
+
+
     return false;
+};
+
+
+//set up inital event handlers
+function init(){
+    $('#form-container').submit(loadData);
 
 };
 
 
-$('#form-container').submit(loadData);
+//add error handling for the requests .error(is decpreicate)
 
-
-//add error handling for the requests
+//********look into error handling for JSNOP requests.
 
 //add a loading function

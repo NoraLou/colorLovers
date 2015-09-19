@@ -23,7 +23,6 @@ html {
     height: 100%;
 }
 
-
 header{
   margin: 0;
   padding:0;
@@ -37,16 +36,18 @@ header{
 
 .centering-container{
   text-align: center;
-  margin:auto;
+  margin:0 auto;
+  width: 70%;
 }
 
 .palette-container{
-  width: 70%;
+  width: 100%;
   max-width: 800px;
   height: 250px;
-  display: inline-block;
+  /*display: inline-block;*/
   overflow:hidden;
   padding:20px;
+  margin-bottom: 50px;
   background-color:gainsboro;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
@@ -84,6 +85,151 @@ header{
   -ms-transition:opacity 1s ease-in-out;
   transition:opacity .6s ease-in-out;
 }
+
+/*CAROUSEL EFFECT
+*/
+
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.carousel-container{
+  overflow:hidden;
+  padding:0;
+  margin:0;
+  width:500%;
+  transition: transform 0.3s cubic-bezier(.694, .0482, .335, 1);
+  /*finds transition vender prefix for safari*/
+}
+
+.carousel-item {
+    position: relative;
+    float: left;
+    width: 20%;
+}
+
+.carousel-item > div {
+    height: 250px;
+    width:100%;
+    /*line-height: 500px;
+    font-size: 1.5em;
+    text-align: center;*/
+    /*color: #fff;*/
+}
+
+
+.item-1 {
+    background-color: transparent;
+}
+
+.item-2 {
+    background-color: #B22222;
+}
+
+.item-3 {
+    background-color: #006400;
+}
+
+.item-4 {
+    background-color: #FFD700;
+}
+
+.item-5 {
+    background-color: #FF4500;
+}
+
+
+
+/* Next / Prev Buttons */
+
+
+.container{
+  position:relative;
+  max-width: 1100px;
+  margin:0 auto;
+  text-align: center;
+}
+
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+   /* right: 50%;*/
+    background-color: #222;
+    opacity: 0.7;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+   /* line-height: 40px;*/
+  /*  -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);*/
+    text-align: center;
+    z-index: 10;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-prev {
+    left:10%;
+}
+
+.carousel-next {
+    right: 10%;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
