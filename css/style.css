@@ -3,5 +3,86 @@
 
 /* change default a tag active etc.....*/
 
-* {box-sizing:border-box;}
-body {background-color: #FFf;}
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #fff;
+    background-color: transparent;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+
+header{
+  margin: 0;
+  padding:0;
+  height: 60px;
+  width: 100%;
+  background-color: grey;
+  border-bottom: 1px solid #D8D8D8;
+  box-shadow: 0 1px 1px 0 rgba(140,140,140,.15);
+  z-index:999;
+}
+
+.centering-container{
+  text-align: center;
+  margin:auto;
+}
+
+.palette-container{
+  position: relative;
+  width: 70%;
+  max-width: 800px;
+  height: 250px;
+  /*background-color: red;*/
+  margin:;
+  padding:;
+  display: inline-block;
+  overflow:hidden;
+}
+
+.palette{
+  position: relative;
+  width:100%;
+  height:100%;
+}
+
+.color-sample{
+  text-align: left;
+ /* position:absolute;*/
+  display:inline-block;
+  margin-right: -5px;
+ /* margin-left: -2%;*/
+  width: 20%;
+  height:100%;
+}
+
+/*.color-sample:first-of-type{*/
+  /*margin-right: -2px
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

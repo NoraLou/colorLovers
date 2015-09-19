@@ -1,34 +1,32 @@
+
+
+
+var paletteArray = [];
+
 function loadData() {
-
-    // $.get('http://www.colourlovers.com/api/palettes?format=json', function(data){
-    //     console.log(data);
-    // });
-
-    var colorArray = [];
 
     $.getJSON("http://www.colourlovers.com/api/palettes?jsonCallback=?",
         {},
         function(data) {
-            console.log(data)
+            console.log(data);
+
+            for(var i = 0; i< data.length; i++){
+                if(data[i].hasOwnProperty('colors')){
+                    paletteArray.push(data[i].colors)
+                }
+            }
+            console.log(paletteArray);
         }
     );
 
-    console.log("***************colorArray****************")
-    console.log(colorArray)
-
-
-    // $.ajax({
-    //     url:'http://www.colourlovers.com/api/palettes/?format=json',
-    //     dataType: 'jsonp',
-    //     type: 'GET',
-    //     success: function(response){
-    //         console.log(response);
-    //     }
-    // });
-
     return false;
-
 
 };
 
+
 $('#form-container').submit(loadData);
+
+
+//add error handling for the requests
+
+//add a loading function
