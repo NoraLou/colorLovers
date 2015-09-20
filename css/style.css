@@ -90,7 +90,8 @@ header{
 */
 
 
-.carousel {
+#carousel {
+    height: 250px;
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -104,6 +105,11 @@ header{
   width:500%;
   transition: transform 0.3s cubic-bezier(.694, .0482, .335, 1);
   /*finds transition vender prefix for safari*/
+ /* transition-property: transform;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.694, 0.0482, 0.335, 1);
+  transition-delay: initial;*/
+
 }
 
 .carousel-item {
