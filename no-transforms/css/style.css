@@ -1,0 +1,277 @@
+
+/*General Settings*/
+
+/* change default a tag active etc.....*/
+
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: black;
+    background-color: transparent;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+header{
+  margin: 0;
+  padding:0;
+  height: 60px;
+  width: 100%;
+  background-color: grey;
+  border-bottom: 1px solid #D8D8D8;
+  box-shadow: 0 1px 1px 0 rgba(140,140,140,.15);
+  z-index:999;
+}
+
+.centering-container{
+  text-align: center;
+  margin:0 auto;
+  width: 70%;
+}
+
+.palette-container{
+  width: 100%;
+  max-width: 800px;
+  height: 250px;
+  /*display: inline-block;*/
+  overflow:hidden;
+  padding:20px;
+  margin-bottom: 50px;
+  background-color:gainsboro;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+
+.color-sample{
+  position:relative;
+  text-align: left;
+  display:inline-block;
+  width: 20%;
+  margin-right:-2.5px;
+  margin-left:-2.5px ;
+  height:100%;
+}
+
+
+.color-overlay{
+  background-color: black;
+  display:inline-block;
+  position:absolute;
+  width:100%;
+  top: 0;
+  left: 0;
+  height: 100%;
+  opacity:0;
+  color: white;
+  /*text-align: center;*/
+}
+
+.color-overlay:hover{
+  opacity: .7;
+  -webkit-transition:opacity s ease-in-out;
+  -moz-transition:opacity 1s ease-in-out;
+  -o-transition:opacity 1s ease-in-out;
+  -ms-transition:opacity 1s ease-in-out;
+  transition:opacity .6s ease-in-out;
+}
+
+/*CAROUSEL EFFECT
+*/
+
+
+#carousel {
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.carousel-container{
+  overflow:hidden;
+  padding:0;
+  margin:0;
+  width:500%;
+  transition: transform 0.3s cubic-bezier(.694, .0482, .335, 1);
+  /*finds transition vender prefix for safari*/
+ /* transition-property: transform;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.694, 0.0482, 0.335, 1);
+  transition-delay: initial;*/
+
+}
+
+.carousel-item {
+    position: relative;
+    float: left;
+    width: 20%;
+}
+
+.carousel-item > div {
+    height: 250px;
+    width:100%;
+    /*line-height: 500px;
+    font-size: 1.5em;
+    text-align: center;*/
+    /*color: #fff;*/
+}
+
+
+.item-1 {
+    background-color: transparent;
+}
+
+.item-2 {
+    background-color: #B22222;
+}
+
+.item-3 {
+    background-color: #006400;
+}
+
+.item-4 {
+    background-color: #FFD700;
+}
+
+.item-5 {
+    background-color: #FF4500;
+}
+
+
+
+/* Next / Prev Buttons */
+
+
+.container{
+  position:relative;
+  max-width: 1100px;
+  margin:0 auto;
+  text-align: center;
+}
+
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+   /* right: 50%;*/
+    background-color: #222;
+    opacity: 0.7;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+   /* line-height: 40px;*/
+  /*  -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);*/
+    text-align: center;
+    z-index: 10;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-prev {
+    left:10%;
+}
+
+.carousel-next {
+    right: 10%;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    opacity: 1;
+}
+
+
+
+/*ADDING STYLES TO AVOID USING TRANSFORMS*/
+
+#wrapper {
+  margin: 0 auto;
+  width: 70%;
+  max-width: 800px;
+  text-align: center; /* NEW */
+}
+
+
+#slider {
+  position: relative;
+  margin: 40px auto 20px auto;
+  height: 250px;
+  width: 100%;
+  max-width: 100%; /* NEW */
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 7px 1px;       /*make change*/
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 7px 1px;             /*make change*/
+  overflow: hidden;
+}
+
+#slider .img {
+  position: absolute;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
