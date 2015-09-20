@@ -8,10 +8,6 @@ $(document).ready(function(){
 });
 
 
-//need a resize window function that on window resize will adjust slider width;
-
-
-
 //set up inital event handlers
 function init(){
     $('#form-container').submit(loadData);
@@ -19,6 +15,7 @@ function init(){
 };
 
 
+//helper functions to make carousel responsive
 function resizeSliderWidth(){
     $( window ).resize(function(){
         getSliderWidth();
@@ -41,34 +38,56 @@ var sizeImages = function(){
 };
 
 
-// $('.fan').each(function(){
-//         $(this).height(window.innerHeight-25);
-
-
 
 
 initCarousel = function(){
 
-  //var delay = 5000;
+  var delay = 5000;
 
   // Set variables
   var numImages = $('.img').length;
+  console.log("numImages ", numImages)
   var previousImage = numImages;
   var currentImage = 1;
   var nextImage = 2;
 
-  // Find width of container div
+  // make this variable global?
+  var sliderWidth = getSliderWidth();
+  sizeImages();
+
+  var resetImages = function(){
+    $('.img').css({"left": sliderWidth + "px"});
+    $('.img').first().css({"left": sliderWidth + "px"});
+    $('.1').addClass("active");
+  };
+
+  resetImages();
+
+  var slideNextImageLeft = function(){
+    $('.image-' + nextImage).css({"left:" sliderWidth + "px"});
+    $('.image-' + currentImage).animate({left: sliderWidth * -1}, 1000);
+    $('.image-' + nextImage).animate({left: "0px"}, 1000);
+    currentImage = nextImage;
+    increaseImages();
+  };
+
+  // Slide to the previous image
+  var slidePreviousImageRight = function() {
+    $('.image-' + previousImage).css({"left": (sliderWidth * -1)+"px"});
+    $('.image-' + currentImage).animate({left: sliderWidth}, 1000);
+    $('.image-' + previousImage).animate({left: "0px"}, 1000);
+    currentImage = previousImage;
+    increaseImages();
+  };
 
 
-  //Find width of palette img in container
-        // possibly add a class "active" to determine which is on view
-  // var listimgWidth = $('.img .img-1').width();
-  // console.log('.imges ', listimgWidth);
 
 
 
 
-}
+
+
+};
 
 
 
@@ -100,55 +119,7 @@ function loadData() {
 // }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ // possibly add a class "active" to determine which is on view
 
 //add error handling for the requests .error(is decpreicate)
 
