@@ -155,15 +155,6 @@ function loadData() {
   return false;
 };
 
-var myArray = {
-    0 : []
-
-
-
-
-
-
-}
 
 
 
@@ -173,7 +164,8 @@ function displayData(arr){
   for(var i = 0; i< arr.length; i++){
 
     var newDiv = document.createElement('div');
-    $(newDiv).addClass('img image-' + i + 1);
+    var sequence = Number(i+1)
+    $(newDiv).addClass('img image-' + sequence);
     var paletteContainer = document.createElement('div');
     $(paletteContainer).addClass('palette-container');
     $(newDiv).append(paletteContainer);
@@ -182,17 +174,18 @@ function displayData(arr){
 
     //append all to paletteContainers
     for(var j = 0; j < arr[i].length; j++){
-      console.log(arr[i][j]);
+      var colorSample = document.createElement('div');
+      $(colorSample).addClass('color-sample')
+      var color = arr[i][j]
+      $(colorSample).css('background-color', '#'+color).attr('data-color','#'+color)
+      var overlay = document.createElement('div');
+      $(overlay).addClass('color-overlay').append(
+        '<p>'+ $(colorSample).attr('data-color') +'</p>');
 
 
+      $(colorSample).append(overlay);
 
-
-      // // ('#slider').append($(paletteContainer));
-      // var colorSample = document.createElement('div');
-      // $(colorSample).addClass('color-sample')
-      // $(colorSample).css('background-color', arr[i][j])
-      // $(paletteContainer).append(colorSample);
-
+      $(paletteContainer).append(colorSample);
     }
   }
   return false;// why do I put this here?

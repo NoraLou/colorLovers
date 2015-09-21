@@ -72,8 +72,15 @@ header{
   height: 100%;
   opacity:0;
   color: white;
-  /*text-align: center;*/
+  font-size: 18px;
+  text-align: center;
 }
+
+.color-overlay p{
+  margin-top: 60px;
+  letter-spacing: 2px;
+}
+
 
 .color-overlay:hover{
   opacity: .7;
