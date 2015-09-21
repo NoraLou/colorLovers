@@ -4,7 +4,9 @@ $(document).ready(function(){
   init();
   resizeSliderWidth();
   initCarousel();
+  //getNumber(10);
 
+  getColor();
 
 });
 
@@ -132,28 +134,56 @@ initCarousel = function(){
 };
 
 
-var paletteArray = [];
+
 
 
 function loadData() {
-    $.getJSON("http://www.colourlovers.com/api/palettes?jsonCallback=?",
-        {},
-        function(data) {
-            console.log(data);
 
-            for(var i = 0; i < 5; i++){
-                if(data[i].hasOwnProperty('colors')){
-                    paletteArray.push(data[i].colors)
-                }
-            }
-            console.log(paletteArray);
-            console.log("DISPLAY DATA")
+  var paletteArray = [];
 
-            displayData(paletteArray);
-        }
-    );
+  $.getJSON("http://www.colourlovers.com/api/palettes?jsonCallback=?",
+    {},
+    function(data) {
+      console.log(data);
+      for(var i = 0; i < 5; i++){
+        if(data[i].hasOwnProperty('colors')){
+          paletteArray.push(data[i].colors)
+         }
+      }
+      displayData(paletteArray);
+      initCarousel();
+    }
+  );
   return false;
 };
+
+function getColor(){
+
+
+
+}
+
+function getNumber(n){
+  $.getJSON("http://www.colourlovers.com/api/palettes?numResults="+ n+ "&jsonCallback=?",
+    {},
+    function(data) {
+     console.log(data)
+    }
+  );
+};
+
+
+function getColor(){
+  $.getJSON("http://www.colourlovers.com/api/palettes?hex=d5a4a4&jsonCallback=?",
+    {},
+    function(data) {
+     console.log(data)
+    }
+  );
+};
+
+//function get New top random
+
 
 
 
@@ -161,18 +191,16 @@ function loadData() {
 
 
 function displayData(arr){
+ //create container for palette
   for(var i = 0; i< arr.length; i++){
-
     var newDiv = document.createElement('div');
     var sequence = Number(i+1)
     $(newDiv).addClass('img image-' + sequence);
     var paletteContainer = document.createElement('div');
     $(paletteContainer).addClass('palette-container');
     $(newDiv).append(paletteContainer);
-
     $('#slider').append(newDiv);
-
-    //append all to paletteContainers
+    //append all colors to palette
     for(var j = 0; j < arr[i].length; j++){
       var colorSample = document.createElement('div');
       $(colorSample).addClass('color-sample')
@@ -181,10 +209,7 @@ function displayData(arr){
       var overlay = document.createElement('div');
       $(overlay).addClass('color-overlay').append(
         '<p>'+ $(colorSample).attr('data-color') +'</p>');
-
-
       $(colorSample).append(overlay);
-
       $(paletteContainer).append(colorSample);
     }
   }
@@ -195,10 +220,7 @@ function displayData(arr){
 
 
 
-// function displayData(arr){
 
-
-// }
 
 
  // possibly add a class "active" to determine which is on view
