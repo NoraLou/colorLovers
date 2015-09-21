@@ -103,23 +103,6 @@ initCarousel = function(){
     increaseImages();
   };
 
-
-
-  // var slidePreviousImageRight = function()
-  //   $('.image-' + previousImage).css(left: getSliderWidth() * -1)
-  //   $('.image-' + previousImage).removeClass('onBottom');
-  //   $('.image-' + previousImage).addClass('onTop');
-
-  //   $('.image-' + currentImage).removeClass('onTop');
-  //   $('.image-' + currentImage).addClass('onBottom');
-  //   $('.image-' + currentImage).animate({left: getSliderWidth() }, 1000);
-
-
-  //   $('.image-' + previousImage).animate({left: "0px"}, 1000);
-  //   currentImage = previousImage;
-  //   increaseImages();
-  // };
-
    var increaseImages = function() {
     if(currentImage === numImages) {
       nextImage = 1;
@@ -137,20 +120,19 @@ initCarousel = function(){
   // When previous button is clicked
   $('.carousel-prev').click(function() {
     slidePreviousImageRight();
-    console.log("-prev currentImage: ",currentImage);
+    // console.log("-prev currentImage: ",currentImage);
   });
 
 
   $('.carousel-next').click(function() {
     slideNextImageLeft();
-    console.log("+next currentImage: ",currentImage);
+    // console.log("+next currentImage: ",currentImage);
   });
-
 
 };
 
 
-
+var paletteArray = [];
 
 
 function loadData() {
@@ -165,14 +147,61 @@ function loadData() {
                 }
             }
             console.log(paletteArray);
+            console.log("DISPLAY DATA")
+
+            displayData(paletteArray);
         }
     );
   return false;
 };
 
+var myArray = {
+    0 : []
 
 
-// takes an array of objects
+
+
+
+
+}
+
+
+
+
+
+function displayData(arr){
+  for(var i = 0; i< arr.length; i++){
+
+    var newDiv = document.createElement('div');
+    $(newDiv).addClass('img image-' + i + 1);
+    var paletteContainer = document.createElement('div');
+    $(paletteContainer).addClass('palette-container');
+    $(newDiv).append(paletteContainer);
+
+    $('#slider').append(newDiv);
+
+    //append all to paletteContainers
+    for(var j = 0; j < arr[i].length; j++){
+      console.log(arr[i][j]);
+
+
+
+
+      // // ('#slider').append($(paletteContainer));
+      // var colorSample = document.createElement('div');
+      // $(colorSample).addClass('color-sample')
+      // $(colorSample).css('background-color', arr[i][j])
+      // $(paletteContainer).append(colorSample);
+
+    }
+  }
+  return false;// why do I put this here?
+};
+
+
+
+
+
 // function displayData(arr){
 
 
