@@ -58,9 +58,14 @@ initCarousel = function(){
   var resetImages = function(){
     //move images off canvas
     $('.img').css({"left": getSliderWidth() + "px"});
+    $('.img:not(:first)').addClass('onBottom');
+
     //move first image on to canvas, place on top
     $('.img').first().css({"left":"0px"});
     $('.img').first().addClass('onTop');
+
+    // $('.img').css(addClass('onBottom')
+
   };
 
   resetImages();
@@ -84,28 +89,36 @@ initCarousel = function(){
     increaseImages();
   };
 
-
+  // Slide to the previous image
   var slidePreviousImageRight = function() {
     $('.image-' + previousImage).css({"left": (getSliderWidth() * -1)+"px"});
-    $('.image-' + currentImage).animate({left: getSliderWidth() }, 1000);
+    $('.image-' + previousImage).removeClass('onBottom');
+    $('.image-' + previousImage).addClass('onTop');
+
+    $('.image-' + currentImage).removeClass('onTop');
+    $('.image-' + currentImage).addClass('onBottom');
+    $('.image-' + currentImage).animate({left: getSliderWidth()}, 1000);
     $('.image-' + previousImage).animate({left: "0px"}, 1000);
     currentImage = previousImage;
     increaseImages();
   };
 
 
-  // Slide to the previous image
-  var slidePreviousImageRight = function() {
 
-    $('.image-' + previousImage).css({"left": (getSliderWidth() * -1)+"px"});
+  // var slidePreviousImageRight = function()
+  //   $('.image-' + previousImage).css(left: getSliderWidth() * -1)
+  //   $('.image-' + previousImage).removeClass('onBottom');
+  //   $('.image-' + previousImage).addClass('onTop');
 
-    $('.image-' + currentImage).animate({left: getSliderWidth() }, 1000);
-    // $('.image-' + currentImage).
+  //   $('.image-' + currentImage).removeClass('onTop');
+  //   $('.image-' + currentImage).addClass('onBottom');
+  //   $('.image-' + currentImage).animate({left: getSliderWidth() }, 1000);
 
-    // $('.image-' + previousImage).animate({left: "0px"}, 1000);
-    currentImage = previousImage;
-    increaseImages();
-  };
+
+  //   $('.image-' + previousImage).animate({left: "0px"}, 1000);
+  //   currentImage = previousImage;
+  //   increaseImages();
+  // };
 
    var increaseImages = function() {
     if(currentImage === numImages) {
