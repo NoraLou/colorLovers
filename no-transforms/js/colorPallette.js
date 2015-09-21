@@ -5,6 +5,7 @@ $(document).ready(function(){
   resizeSliderWidth();
   initCarousel();
 
+
 });
 
 
@@ -25,7 +26,7 @@ function resizeSliderWidth(){
 
 var getSliderWidth = function(){
     var sliderWidth = $('#slider').width()+2
-    console.log('sliderWidth ', sliderWidth);
+    // console.log('sliderWidth ', sliderWidth);
     return sliderWidth;
 }
 
@@ -33,7 +34,7 @@ var sizeImages = function(){
  $('.img').each(function(){
     $(this).width(getSliderWidth());
     var imgWidth = $(this).width();
-    console.log("imgWidth ", imgWidth)
+    // console.log("imgWidth ", imgWidth)
  })
 };
 
@@ -42,49 +43,83 @@ var sizeImages = function(){
 
 initCarousel = function(){
 
-  var delay = 5000;
+  // var delay = 5000;
 
-  // Set variables
+
   var numImages = $('.img').length;
-  console.log("numImages ", numImages)
   var previousImage = numImages;
   var currentImage = 1;
   var nextImage = 2;
 
-  // make this variable global?
   var sliderWidth = getSliderWidth();
   sizeImages();
 
+
   var resetImages = function(){
-    $('.img').css({"left": sliderWidth + "px"});
-    $('.img').first().css({"left": sliderWidth + "px"});
-    $('.1').addClass("active");
+    $('.img').css({"left": getSliderWidth() + "px"});
+    $('.img').first().css({"left":"0px"});
+    // $('.1').addClass("active");
   };
 
   resetImages();
 
-  var slideNextImageLeft = function(){
-    $('.image-' + nextImage).css({"left:" sliderWidth + "px"});
-    $('.image-' + currentImage).animate({left: sliderWidth * -1}, 1000);
+  // Slide to next image
+  var slideNextImageLeft = function() {
+    $('.image-' + nextImage).css({"left": getSliderWidth() + "px"});
+    $('.image-' + currentImage).animate({left: getSliderWidth() * -1}, 1000);
     $('.image-' + nextImage).animate({left: "0px"}, 1000);
     currentImage = nextImage;
     increaseImages();
   };
 
-  // Slide to the previous image
+
   var slidePreviousImageRight = function() {
-    $('.image-' + previousImage).css({"left": (sliderWidth * -1)+"px"});
-    $('.image-' + currentImage).animate({left: sliderWidth}, 1000);
+    $('.image-' + previousImage).css({"left": (getSliderWidth() * -1)+"px"});
+    $('.image-' + currentImage).animate({left: getSliderWidth() }, 1000);
     $('.image-' + previousImage).animate({left: "0px"}, 1000);
     currentImage = previousImage;
     increaseImages();
   };
 
 
+  // Slide to the previous image
+  var slidePreviousImageRight = function() {
+
+    $('.image-' + previousImage).css({"left": (getSliderWidth() * -1)+"px"});
+
+    $('.image-' + currentImage).animate({left: getSliderWidth() }, 1000);
+    // $('.image-' + currentImage).
+
+    // $('.image-' + previousImage).animate({left: "0px"}, 1000);
+    currentImage = previousImage;
+    increaseImages();
+  };
+
+   var increaseImages = function() {
+    if(currentImage === numImages) {
+      nextImage = 1;
+      previousImage = currentImage - 1;
+    } else {
+      nextImage = currentImage + 1;
+      if(currentImage === 1) {
+        previousImage = numImages;
+      } else {
+        previousImage = currentImage - 1;
+      }
+    }
+  };
+
+  // When previous button is clicked
+  $('.carousel-prev').click(function() {
+    slidePreviousImageRight();
+    console.log("-prev currentImage: ",currentImage);
+  });
 
 
-
-
+  $('.carousel-next').click(function() {
+    slideNextImageLeft();
+    console.log("+next currentImage: ",currentImage);
+  });
 
 
 };

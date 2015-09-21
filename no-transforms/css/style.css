@@ -212,9 +212,12 @@ header{
   height: 250px;
   width: 100%;
   max-width: 100%; /* NEW */
-  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 7px 1px;       /*make change*/
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 7px 1px;             /*make change*/
+
+/*  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 7px 1px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 7px 1px;*/
+
   overflow: hidden;
+
 }
 
 #slider .img {
