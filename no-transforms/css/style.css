@@ -15,7 +15,25 @@ body {
     height: 100%;
     font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
     color: black;
+   /* background-color: transparent;*/
+  /*  background-attachment: scroll;*/
+    background-attachment: fixed;
     background-color: transparent;
+    background-image: url(../img/background.png),none;
+   /* background-position: ;*/
+  /*  background-repeat: no-repeat;*/
+    background-repeat: repeat, repeat;
+    background-size:auto;
+    background-position: center center;
+    z-index: 0
+
+
+
+
+
+
+
+
 }
 
 html {
@@ -28,18 +46,18 @@ header{
   padding:0;
   height: 60px;
   width: 100%;
-  background-color: gainsboro;
+  background-color: white;
   border-bottom: 1px solid #D8D8D8;
   /*box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);*/
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   z-index:999;
 }
 
-.centering-container{
+/*.centering-container{
   text-align: center;
   margin:0 auto;
   width: 70%;
-}
+}*/
 
 .palette-container{
   width: 100%;
@@ -141,10 +159,16 @@ header{
 
 
 .container{
+  background-color: #fff;
   position:relative;
-  max-width: 1100px;
+  max-width: 1000px;
   margin:0 auto;
   text-align: center;
+  padding-top: 40px;
+  padding-bottom: 120px;
+  margin-top: 600px;
+  margin-bottom: 200px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .carousel-prev,
@@ -181,7 +205,7 @@ header{
 
 /*ADDING STYLES TO AVOID USING TRANSFORMS*/
 
-#wrapper {
+.wrapper {
   margin: 0 auto;
   width: 70%;
   max-width: 800px;
@@ -191,7 +215,7 @@ header{
 
 #slider {
   position: relative;
-  margin: 40px auto 20px auto;
+  margin: 40px auto 40px auto;
   height: 250px;
   width: 100%;
   max-width: 100%; /* NEW */
