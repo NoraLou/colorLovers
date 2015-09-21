@@ -213,9 +213,9 @@ header{
   width: 100%;
   max-width: 100%; /* NEW */
 
-/*  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 7px 1px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 7px 1px;*/
-
+  /*-webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 7px 1px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 7px 1px;
+*/
   overflow: hidden;
 
 }
@@ -224,7 +224,18 @@ header{
   position: absolute;
 }
 
+.onTop{
+  z-index: 999;
+  opacity: 1;
+  transition: opacity .5s linear;
+}
 
+.onBottom{
+  opacity:0;
+  opacity: 0;
+  transition: visibility 0s .5s, opacity .5s linear;
+
+}
 
 
 
