@@ -15,16 +15,19 @@
       <header>
       </header>
 
-      <div class = "wrapper color-picker">
+      <div>
+        <form>
+          <div>
+            <span class = "grey-btn" id="start-over" >Start</span>
+            <input type="text" id="colorvalue" value="" placeholder="enter a hue or a hex number">
+            <button id="submit-btn" class="grey-btn" type ="submit">Search</button>
+          </div>
+        </form>
+      </div>
 
-
-          <label for="colorvalue">color: </label><input type="text" id="colorvalue" value="">
-          <button id="submit-btn">Submit</button>
-
-
-      </div> <!-- wrapper -->
-
-       <div class="container" style = "">
+       <div class="container">
+        <div class = "flash">To Begin, choose a starting hue from below. Then,choose hex values. Hit Start to begin again.
+        </div>
         <div class="wrapper">
         <div class="carousel-prev"></div>
         <div class="carousel-next"></div>

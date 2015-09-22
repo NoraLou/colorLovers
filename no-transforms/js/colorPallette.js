@@ -3,21 +3,27 @@
 $(document).ready(function(){
   init();
   resizeSliderWidth();
+  $('.flash').fadeOut(10000);
 
 });
 
-
+//set up initial event handlers
 function init(){
-
-    // $('#form-container').submit(getColor);
-
-  $('#submit-btn').click(function(ev){
+  $('form').submit(function(event){
     var currentSearch = $('#colorvalue').val();
+
+    if(currentSearch === ''){
+      $('input[type=text]').attr('placeholder','Please enter a valid search').focus();
+    }else{
+      $('input[type=text]').attr('placeholder','Enter a hue or a hex number')
+    }
+
     if($('#palettes').length > 0){
       $('#palettes').empty();
     }
     getColor(currentSearch);
     $('#colorvalue').val('');
+    event.preventDefault();
   });
 
   $('body').on('click', 'div.color-sample>div.color-overlay',function(event){
@@ -27,8 +33,7 @@ function init(){
 };
 
 
-
-//helper functions to make carousel responsive
+//helper functions to make carousel responsive when viewport changes
 function resizeSliderWidth(){
     $( window ).resize(function(){
         getSliderWidth();
@@ -149,13 +154,14 @@ initCarousel = function(){
 
 
 function getColor(value){
+  // if value is not in hex array or does not
 
   var paletteArray =[];
   var baseURL = "http://www.colourlovers.com/api/palettes?"
   var callBack = "&jsonCallback=?"
   var query ;
 
-  if(value == ''){alert("enter a color")
+  if(value == ''){
     return;
   };
 
@@ -164,9 +170,12 @@ function getColor(value){
     console.log(query);
     console.log(typeof(query));
   }else{
+    //check if value is in the hex array - if not -flash error
+    //if, else if, else
     query = "hueOption=" + value;
     console.log(query)
   }
+
 
 
   $.getJSON(baseURL+query+callBack,
@@ -178,6 +187,7 @@ function getColor(value){
           paletteArray.push(data[i].colors)
          }
       }
+      clearTimeout(colorRequestTimeout);
       displayData(paletteArray);
       initCarousel();
     }
@@ -212,16 +222,3 @@ function displayData(arr){
 };
 
 
-
-
-
-
-
-
-
-
-//add error handling for the requests .error(is decpreicate)
-
-//********look into error handling for JSNOP requests.
-
-//add a loading function
