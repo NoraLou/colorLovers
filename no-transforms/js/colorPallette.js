@@ -4,6 +4,7 @@ $(document).ready(function(){
   init();
   resizeSliderWidth();
   // getColor('#3f1952');
+  console.log("RELOADED");
 
 });
 
@@ -15,24 +16,60 @@ function init(){
 
     //use the .on syntax for below to catch dynamically created els too?
 
-    $('.color-overlay').click(function(ev){
-        var searchValue = $(this).parent().attr('data-color');
-        $('#form-container>input').val(searchValue);
-    });
+    // $('.color-overlay').click(function(ev){
+    //     var searchValue = $(this).parent().attr('data-color');
+    //     $('#colorvalue').val(searchValue);
+    // });
+
+    // $('.color-overlay').on('click', function(){
+    //   var searchValue = $(this).parent().attr('data-color');
+    //   alert('whatever')
+    //   $('#colorvalue').val(searchValue);
+    // })
+
+    // $('body').on('click', 'a.myclass', function() {
+    // // do something
+    // });
+
+    // $('div.palette-container').on('click', 'div.color-overlay',function(){
+    //   var searchValue = $(this).parent().attr('data-color');
+    //   $('#colorvalue').val(searchValue);
+    // });
 
     $('#submit-btn').click(function(ev){
-
       var currentSearch = $('#colorvalue').val();
-
-      console.log(currentSearch);
-
-
+      // console.log(currentSearch);
       getColor(currentSearch);
-
-      //$('#form-container>input').val('');
-
+      $('#colorvalue').val('');
     });
+
+    // $( "form" ).on( "submit", function( event ) {
+    //   event.stopPropagation();
+    // });
+
+
+
 };
+
+
+$('div.palette-container').on('click', 'div.color-sample>div.color-overlay',function(){
+  var searchValue = $(this).parent().attr('data-color');
+  $('#colorvalue').val(searchValue);
+});
+
+// $('div.img.onTop.image-1>div.palette-container').on('click', 'div.color-sample>div.color-overlay',function(event){
+//   var searchValue = $(this).parent().attr('data-color');
+//   $('#colorvalue').val(searchValue);
+// });
+
+$('body').on('click', 'div.color-sample>div.color-overlay',function(event){
+  var searchValue = $(this).parent().attr('data-color');
+  $('#colorvalue').val(searchValue);
+});
+
+
+
+
 
 //var currentSearch =  $('#form-container>input').val()
 
@@ -68,6 +105,8 @@ var sizeImages = function(){
 initCarousel = function(){
 
   // var delay = 5000;
+
+  $('#start-hues').addClass('onBottom')
 
   var numImages = $('.img').length;
   var previousImage = numImages;
@@ -147,7 +186,7 @@ initCarousel = function(){
   });
 
 
-  $('.carousel-next').click(function() {
+  $('.carousel-next').click(function(){
     slideNextImageLeft();
     // console.log("+next currentImage: ",currentImage);
   });
