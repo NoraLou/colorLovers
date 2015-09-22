@@ -3,33 +3,39 @@
 $(document).ready(function(){
   init();
   resizeSliderWidth();
-  $('.flash').fadeOut(10000);
+  $('.flash').fadeOut(8000);
 
 });
 
 //set up initial event handlers
 function init(){
+
+  //submit function
   $('form').submit(function(event){
     var currentSearch = $('#colorvalue').val();
-
     if(currentSearch === ''){
       $('input[type=text]').attr('placeholder','Please enter a valid search').focus();
     }else{
       $('input[type=text]').attr('placeholder','Enter a hue or a hex number')
-    }
-
-    if($('#palettes').length > 0){
-      $('#palettes').empty();
     }
     getColor(currentSearch);
     $('#colorvalue').val('');
     event.preventDefault();
   });
 
+  //click handler for color sample hover state
   $('body').on('click', 'div.color-sample>div.color-overlay',function(event){
     var searchValue = $(this).parent().attr('data-color');
     $('#colorvalue').val(searchValue);
   });
+
+  //restart function
+  $('#start-over').click(function(){
+    $('#start-hues').removeClass('onBottom');
+    $('.increment').css('opacity',0);
+    $('#palettes').empty();
+  });
+
 };
 
 
@@ -70,8 +76,18 @@ initCarousel = function(){
 
   if(numImages > 1){
     $('.increment').css('opacity',.5);
+  };
+
+  if(numImages === 1){
+    $('.increment').css('opacity',0);
+    $('.flash').css('display','block').text('only one palette found for this color');
+    $('.flash').fadeOut(5000);
   }
 
+  // if(numImages === 0){
+  //   $('.flash').css('display','block').text('only one palette found for this color');
+  //   $('.flash').fadeOut(10000);
+  // }
 
   //#90F3C2 ONLY ONE PALLETTE
 
@@ -169,6 +185,10 @@ function getColor(value){
   if(value == ''){
     return;
   };
+
+  // if($('#palettes').length > 0){
+  $('#palettes').empty();
+  // }
 
   if(value.slice(0,1) === '#'){
     query = "hex=" + value.slice(1,value.length);
