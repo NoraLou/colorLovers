@@ -14,37 +14,20 @@ function init(){
 
     // $('#form-container').submit(getColor);
 
-    //use the .on syntax for below to catch dynamically created els too?
-
-    // $('.color-overlay').click(function(ev){
-    //     var searchValue = $(this).parent().attr('data-color');
-    //     $('#colorvalue').val(searchValue);
-    // });
-
-    // $('.color-overlay').on('click', function(){
-    //   var searchValue = $(this).parent().attr('data-color');
-    //   alert('whatever')
-    //   $('#colorvalue').val(searchValue);
-    // })
-
-    // $('body').on('click', 'a.myclass', function() {
-    // // do something
-    // });
-
-    // $('div.palette-container').on('click', 'div.color-overlay',function(){
-    //   var searchValue = $(this).parent().attr('data-color');
-    //   $('#colorvalue').val(searchValue);
-    // });
-
     $('#submit-btn').click(function(ev){
       var currentSearch = $('#colorvalue').val();
-      // console.log(currentSearch);
+      if($('#palettes').length > 0){
+        $('#palettes').empty();
+      }
+
       getColor(currentSearch);
       $('#colorvalue').val('');
+
     });
 
     // $( "form" ).on( "submit", function( event ) {
     //   event.stopPropagation();
+     //  event.preventDefault();
     // });
 
 
@@ -57,14 +40,11 @@ $('div.palette-container').on('click', 'div.color-sample>div.color-overlay',func
   $('#colorvalue').val(searchValue);
 });
 
-// $('div.img.onTop.image-1>div.palette-container').on('click', 'div.color-sample>div.color-overlay',function(event){
-//   var searchValue = $(this).parent().attr('data-color');
-//   $('#colorvalue').val(searchValue);
-// });
 
 $('body').on('click', 'div.color-sample>div.color-overlay',function(event){
   var searchValue = $(this).parent().attr('data-color');
   $('#colorvalue').val(searchValue);
+  // $('#palettes').remove();
 });
 
 
@@ -107,6 +87,8 @@ initCarousel = function(){
   // var delay = 5000;
 
   $('#start-hues').addClass('onBottom')
+
+
 
   var numImages = $('.img').length;
   var previousImage = numImages;
@@ -214,8 +196,7 @@ function getColor(value){
     query = "hueOption=" + value;
     console.log(query)
   }
-  console.log('IMA FUCKING TIRED');
-  console.log(baseURL+query+callBack)
+
 
   $.getJSON(baseURL+query+callBack,
     {},
@@ -242,7 +223,7 @@ function displayData(arr){
     var paletteContainer = document.createElement('div');
     $(paletteContainer).addClass('palette-container');
     $(newDiv).append(paletteContainer);
-    $('#slider').append(newDiv);
+    $('#palettes').append(newDiv);
     //append all colors to palette
     for(var j = 0; j < arr[i].length; j++){
       var colorSample = document.createElement('div');
