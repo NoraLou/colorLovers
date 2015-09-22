@@ -3,59 +3,28 @@
 $(document).ready(function(){
   init();
   resizeSliderWidth();
-  // getColor('#3f1952');
-  console.log("RELOADED");
 
 });
 
 
-//set up inital event handlers
 function init(){
 
     // $('#form-container').submit(getColor);
 
-    $('#submit-btn').click(function(ev){
-      var currentSearch = $('#colorvalue').val();
-      if($('#palettes').length > 0){
-        $('#palettes').empty();
-      }
+  $('#submit-btn').click(function(ev){
+    var currentSearch = $('#colorvalue').val();
+    if($('#palettes').length > 0){
+      $('#palettes').empty();
+    }
+    getColor(currentSearch);
+    $('#colorvalue').val('');
+  });
 
-      getColor(currentSearch);
-      $('#colorvalue').val('');
-
-    });
-
-    // $( "form" ).on( "submit", function( event ) {
-    //   event.stopPropagation();
-     //  event.preventDefault();
-    // });
-
-
-
+  $('body').on('click', 'div.color-sample>div.color-overlay',function(event){
+    var searchValue = $(this).parent().attr('data-color');
+    $('#colorvalue').val(searchValue);
+  });
 };
-
-
-$('div.palette-container').on('click', 'div.color-sample>div.color-overlay',function(){
-  var searchValue = $(this).parent().attr('data-color');
-  $('#colorvalue').val(searchValue);
-});
-
-
-$('body').on('click', 'div.color-sample>div.color-overlay',function(event){
-  var searchValue = $(this).parent().attr('data-color');
-  $('#colorvalue').val(searchValue);
-  // $('#palettes').remove();
-});
-
-
-
-
-
-//var currentSearch =  $('#form-container>input').val()
-
-//console.log(currentSearch);
-
-//$('#form-container').submit(getColor((currentSearch)));
 
 
 
@@ -84,10 +53,14 @@ var sizeImages = function(){
 
 initCarousel = function(){
 
-  // var delay = 5000;
-
   $('#start-hues').addClass('onBottom')
 
+  //if only one element
+  if($('#palettes').length == 0){
+    $('carousel-prev','carousel-next').addClass('onBottom')
+  }else{
+    $('carousel-prev','carousel-next').toggleClass('onBottom')
+  }
 
 
   var numImages = $('.img').length;
@@ -107,8 +80,6 @@ initCarousel = function(){
     //move first image on to canvas, place on top
     $('.img').first().css({"left":"0px"});
     $('.img').first().addClass('onTop');
-
-    // $('.img').css(addClass('onBottom')
 
   };
 
@@ -237,7 +208,7 @@ function displayData(arr){
       $(paletteContainer).append(colorSample);
     }
   }
-  return false;  //?
+  return false;
 };
 
 
@@ -247,7 +218,7 @@ function displayData(arr){
 
 
 
- // possibly add a class "active" to determine which is on view
+
 
 //add error handling for the requests .error(is decpreicate)
 
