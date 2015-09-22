@@ -54,9 +54,25 @@ a:hover {
   cursor:pointer;
 }
 
-h3 { margin-left: 5% }
+h3 {
+  margin-left: 5%
+}
 
 p{ padding:10px;}
+
+.instruct p{
+  padding:3px;
+}
+
+.instruct h3{
+  padding:3px;
+}
+
+.instruct {
+  text-align: left;
+  color: #777;
+  margin-top: 50px;
+}
 
 input{
   -webkit-appearance: none;
@@ -90,7 +106,7 @@ button:focus {outline:0;}
   margin:0 auto;
   text-align: center;
   padding-top: 40px;
-  padding-bottom: 60px;
+  padding-bottom: 100px;
   margin-top: 50px;
   margin-bottom: 60px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -201,7 +217,7 @@ div>form{
 .carousel-prev,
 .carousel-next {
     position: absolute;
-    top: 50%;
+    top: 40%;
     background-color: #222;
     opacity: 0;
     border-radius: 50%;

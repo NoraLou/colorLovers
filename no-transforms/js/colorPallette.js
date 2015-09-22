@@ -2,8 +2,6 @@
 $(document).ready(function(){
   init();
   resizeSliderWidth();
-  $('.flash').fadeOut(30000);
-
 });
 
 //set up initial event handlers
@@ -87,8 +85,6 @@ initCarousel = function(){
   var resetImages = function(){
     //move images off canvas
     $('.img').css({"left": getSliderWidth() + "px"});
-    // $('.img:not(:first)').removeClass('onTop');
-    // $('.img:not(:first)').addClass('onBottom');
     $('.img').removeClass('onTop');
     $('.img').addClass('onBottom');
 
@@ -96,25 +92,20 @@ initCarousel = function(){
     $('.img').first().removeClass('onBottom');
     $('.img').first().css({"left":"0px"});
     $('.img').first().addClass('onTop');
-
-    // $('.image-' + currentImage).addClass('onTop');
   };
 
   resetImages();
 
   // Slide to next image
   var slideNextImageLeft = function() {
-    //set the next image to be waiting in the wing, put it on top
     $('.image-' + nextImage).css({"left": getSliderWidth() + "px"});
     $('.image-' + nextImage).removeClass('onBottom');
     $('.image-' + nextImage).addClass('onTop');
 
-    //put the current image on the bottom,move it left;
     $('.image-' + currentImage).removeClass('onTop');
     $('.image-' + currentImage).addClass('onBottom');
     $('.image-' + currentImage).animate({left: getSliderWidth() * -1}, 1000);
 
-    //add move in the new image
     $('.image-' + nextImage).animate({left: "0px"}, 1000);
     currentImage = nextImage;
 
@@ -207,6 +198,7 @@ function displayData(arr){
     $(paletteContainer).addClass('palette-container');
     $(newDiv).append(paletteContainer);
     $('#palettes').append(newDiv);
+
     //append all colors to palette
     for(var j = 0; j < arr[i].length; j++){
       var colorSample = document.createElement('div');
