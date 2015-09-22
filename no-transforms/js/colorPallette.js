@@ -3,11 +3,7 @@
 $(document).ready(function(){
   init();
   resizeSliderWidth();
-  // initCarousel();
-
-  getColor('#11766D');
-
-  //getHue();
+  // getColor('#3f1952');
 
 });
 
@@ -15,20 +11,34 @@ $(document).ready(function(){
 //set up inital event handlers
 function init(){
 
-    $('#form-container').submit(loadData);
+    // $('#form-container').submit(getColor);
 
     //use the .on syntax for below to catch dynamically created els too?
 
     $('.color-overlay').click(function(ev){
         var searchValue = $(this).parent().attr('data-color');
         $('#form-container>input').val(searchValue);
+    });
 
-    })
+    $('#submit-btn').click(function(ev){
+
+      var currentSearch = $('#colorvalue').val();
+
+      console.log(currentSearch);
 
 
+      getColor(currentSearch);
 
+      //$('#form-container>input').val('');
 
+    });
 };
+
+//var currentSearch =  $('#form-container>input').val()
+
+//console.log(currentSearch);
+
+//$('#form-container').submit(getColor((currentSearch)));
 
 
 
@@ -42,7 +52,6 @@ function resizeSliderWidth(){
 
 var getSliderWidth = function(){
     var sliderWidth = $('#slider').width()+2
-    // console.log('sliderWidth ', sliderWidth);
     return sliderWidth;
 }
 
@@ -50,7 +59,6 @@ var sizeImages = function(){
  $('.img').each(function(){
     $(this).width(getSliderWidth());
     var imgWidth = $(this).width();
-    // console.log("imgWidth ", imgWidth)
  })
 };
 
@@ -60,7 +68,6 @@ var sizeImages = function(){
 initCarousel = function(){
 
   // var delay = 5000;
-
 
   var numImages = $('.img').length;
   var previousImage = numImages;
@@ -149,42 +156,6 @@ initCarousel = function(){
 
 
 
-
-
-function loadData() {
-
-  var paletteArray = [];
-
-  $.getJSON("http://www.colourlovers.com/api/palettes?jsonCallback=?",
-    {},
-    function(data) {
-      console.log(data);
-      for(var i = 0; i < 5; i++){
-        if(data[i].hasOwnProperty('colors')){
-          paletteArray.push(data[i].colors)
-         }
-      }
-      displayData(paletteArray);
-      initCarousel();
-    }
-  );
-  return false;
-};
-
-
-function getNumber(n){
-  $.getJSON("http://www.colourlovers.com/api/palettes?numResults="+ n+ "&jsonCallback=?",
-    {},
-    function(data) {
-     console.log(data)
-    }
-  );
-};
-
-
-
-
-
 function getColor(value){
 
   var paletteArray =[];
@@ -192,13 +163,20 @@ function getColor(value){
   var callBack = "&jsonCallback=?"
   var query ;
 
+  if(value == ''){alert("enter a color")
+    return;
+  };
+
   if(value.slice(0,1) === '#'){
     query = "hex=" + value.slice(1,value.length);
     console.log(query);
+    console.log(typeof(query));
   }else{
     query = "hueOption=" + value;
     console.log(query)
   }
+  console.log('IMA FUCKING TIRED');
+  console.log(baseURL+query+callBack)
 
   $.getJSON(baseURL+query+callBack,
     {},
@@ -214,31 +192,6 @@ function getColor(value){
     }
   );
 };
-
-
-
-
-
-
-function getHue(){
-
-  var paletteArray =[];
-
-  $.getJSON("http://www.colourlovers.com/api/palettes?hueOption=fuchsia&aqua&blue&jsonCallback=?",
-    {},
-    function(data) {
-     console.log(data)
-     for(var i = 0; i < 5; i++){
-        if(data[i].hasOwnProperty('colors')){
-          paletteArray.push(data[i].colors)
-         }
-      }
-      displayData(paletteArray);
-      initCarousel();
-    }
-  );
-};
-
 
 
 function displayData(arr){
@@ -264,7 +217,7 @@ function displayData(arr){
       $(paletteContainer).append(colorSample);
     }
   }
-  return false;// why do I put this here?
+  return false;  //?
 };
 
 
