@@ -1,5 +1,4 @@
 
-
 $(document).ready(function(){
   init();
   resizeSliderWidth();
@@ -84,12 +83,6 @@ initCarousel = function(){
     $('.flash').fadeOut(5000);
   }
 
-  // if(numImages === 0){
-  //   $('.flash').css('display','block').text('only one palette found for this color');
-  //   $('.flash').fadeOut(10000);
-  // }
-
-  //#90F3C2 ONLY ONE PALLETTE
 
   var resetImages = function(){
     //move images off canvas
@@ -105,8 +98,6 @@ initCarousel = function(){
     $('.img').first().addClass('onTop');
 
     // $('.image-' + currentImage).addClass('onTop');
-
-
   };
 
   resetImages();
@@ -158,16 +149,14 @@ initCarousel = function(){
     }
   };
 
-  // When previous button is clicked
+
   $('.carousel-prev').click(function() {
     slidePreviousImageRight();
-    // console.log("-prev currentImage: ",currentImage);
   });
 
 
   $('.carousel-next').click(function(){
     slideNextImageLeft();
-    // console.log("+next currentImage: ",currentImage);
   });
 
 };
@@ -175,7 +164,6 @@ initCarousel = function(){
 
 
 function getColor(value){
-  // if value is not in hex array or does not
 
   var paletteArray =[];
   var baseURL = "http://www.colourlovers.com/api/palettes?"
@@ -184,29 +172,19 @@ function getColor(value){
 
   if(value == ''){
     return;
-  };
+  }
 
-  // if($('#palettes').length > 0){
   $('#palettes').empty();
-  // }
 
   if(value.slice(0,1) === '#'){
     query = "hex=" + value.slice(1,value.length);
-    console.log(query);
-    console.log(typeof(query));
   }else{
-    //check if value is in the hex array - if not -flash error
-    //if, else if, else
     query = "hueOption=" + value;
-    console.log(query)
   }
-
-
 
   $.getJSON(baseURL+query+callBack,
     {},
     function(data) {
-      console.log(data)
       for(var i = 0; i < data.length; i++){
         if(data[i].hasOwnProperty('colors')){
           paletteArray.push(data[i].colors)
