@@ -15,25 +15,13 @@ body {
     height: 100%;
     font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
     color: black;
-   /* background-color: transparent;*/
-  /*  background-attachment: scroll;*/
     background-attachment: fixed;
     background-color: transparent;
     background-image: url(../img/background.png),none;
-   /* background-position: ;*/
-  /*  background-repeat: no-repeat;*/
     background-repeat: repeat, repeat;
     background-size:auto;
     background-position: center center;
     z-index: 0
-
-
-
-
-
-
-
-
 }
 
 html {
@@ -48,16 +36,36 @@ header{
   width: 100%;
   background-color: white;
   border-bottom: 1px solid #D8D8D8;
-  /*box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);*/
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   z-index:999;
 }
 
-/*.centering-container{
-  text-align: center;
-  margin:0 auto;
-  width: 70%;
-}*/
+input{
+  -webkit-appearance: none;
+  /*border: 1px solid red;*/
+}​
+
+input[type=search] {
+  -webkit-appearance: none;
+}
+
+input[type=text] {
+  -webkit-appearance: searchfield;
+}
+
+button{
+
+
+}
+
+
+.wrapper .color-picker{
+  background-color: white;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+
 
 .palette-container{
   width: 100%;
@@ -68,12 +76,23 @@ header{
 
 }
 
+/*merge css color-sample/ hue-sample????/*/
 
 .color-sample{
   position:relative;
   text-align: left;
   display:inline-block;
   width: 20%;
+  margin-right:-2.5px;
+  margin-left:-2.5px ;
+  height:100%;
+}
+
+.hue-sample{
+  position:relative;
+  text-align: left;
+  display:inline-block;
+  width: 14%;
   margin-right:-2.5px;
   margin-left:-2.5px ;
   height:100%;
@@ -166,7 +185,7 @@ header{
   text-align: center;
   padding-top: 40px;
   padding-bottom: 120px;
-  margin-top: 600px;
+  margin-top: 50px;
   margin-bottom: 200px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }

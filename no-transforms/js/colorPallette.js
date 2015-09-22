@@ -3,19 +3,33 @@
 $(document).ready(function(){
   init();
   resizeSliderWidth();
-  initCarousel();
-  //getNumber(10);
+  // initCarousel();
 
-  getColor();
+  getColor('#11766D');
+
+  //getHue();
 
 });
 
 
 //set up inital event handlers
 function init(){
+
     $('#form-container').submit(loadData);
 
+    //use the .on syntax for below to catch dynamically created els too?
+
+    $('.color-overlay').click(function(ev){
+        var searchValue = $(this).parent().attr('data-color');
+        $('#form-container>input').val(searchValue);
+
+    })
+
+
+
+
 };
+
 
 
 //helper functions to make carousel responsive
@@ -157,11 +171,6 @@ function loadData() {
   return false;
 };
 
-function getColor(){
-
-
-
-}
 
 function getNumber(n){
   $.getJSON("http://www.colourlovers.com/api/palettes?numResults="+ n+ "&jsonCallback=?",
@@ -173,20 +182,62 @@ function getNumber(n){
 };
 
 
-function getColor(){
-  $.getJSON("http://www.colourlovers.com/api/palettes?hex=d5a4a4&jsonCallback=?",
+
+
+
+function getColor(value){
+
+  var paletteArray =[];
+  var baseURL = "http://www.colourlovers.com/api/palettes?"
+  var callBack = "&jsonCallback=?"
+  var query ;
+
+  if(value.slice(0,1) === '#'){
+    query = "hex=" + value.slice(1,value.length);
+    console.log(query);
+  }else{
+    query = "hueOption=" + value;
+    console.log(query)
+  }
+
+  $.getJSON(baseURL+query+callBack,
     {},
     function(data) {
-     console.log(data)
+      console.log(data)
+      for(var i = 0; i < data.length; i++){
+        if(data[i].hasOwnProperty('colors')){
+          paletteArray.push(data[i].colors)
+         }
+      }
+      displayData(paletteArray);
+      initCarousel();
     }
   );
 };
 
-//function get New top random
 
 
 
 
+
+function getHue(){
+
+  var paletteArray =[];
+
+  $.getJSON("http://www.colourlovers.com/api/palettes?hueOption=fuchsia&aqua&blue&jsonCallback=?",
+    {},
+    function(data) {
+     console.log(data)
+     for(var i = 0; i < 5; i++){
+        if(data[i].hasOwnProperty('colors')){
+          paletteArray.push(data[i].colors)
+         }
+      }
+      displayData(paletteArray);
+      initCarousel();
+    }
+  );
+};
 
 
 
