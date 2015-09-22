@@ -72,14 +72,24 @@ initCarousel = function(){
     $('.increment').css('opacity',.5);
   }
 
+
+  //#90F3C2 ONLY ONE PALLETTE
+
   var resetImages = function(){
     //move images off canvas
     $('.img').css({"left": getSliderWidth() + "px"});
-    $('.img:not(:first)').addClass('onBottom');
+    // $('.img:not(:first)').removeClass('onTop');
+    // $('.img:not(:first)').addClass('onBottom');
+    $('.img').removeClass('onTop');
+    $('.img').addClass('onBottom');
 
     //move first image on to canvas, place on top
+    $('.img').first().removeClass('onBottom');
     $('.img').first().css({"left":"0px"});
     $('.img').first().addClass('onTop');
+
+    // $('.image-' + currentImage).addClass('onTop');
+
 
   };
 
