@@ -204,11 +204,10 @@ button{
     position: absolute;
     top: 50%;
     background-color: #222;
-    opacity: 0.7;
+    opacity: 0;
     border-radius: 50%;
     color: #fff;
     font-size: 1em;
-    cursor: pointer;
     width: 40px;
     height: 40px;
     text-align: center;
@@ -217,11 +216,11 @@ button{
 }
 
 .carousel-prev {
-    left:10%;
+    left: 4%;
 }
 
 .carousel-next {
-    right: 10%;
+    right: 4%;
 }
 
 .carousel-prev:hover,
@@ -313,9 +312,9 @@ div>form{
 }
 
 
-
-
-
+/*
+Media Query changes from 500px on or set min-width
+*/
 
 
 

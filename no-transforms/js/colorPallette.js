@@ -55,18 +55,10 @@ var sizeImages = function(){
 
 
 
-
+//make a new carousel for a new palette
 initCarousel = function(){
 
   $('#start-hues').addClass('onBottom')
-
-  //if only one element
-  if($('#palettes').length == 0){
-    $('carousel-prev','carousel-next').addClass('onBottom')
-  }else{
-    $('carousel-prev','carousel-next').toggleClass('onBottom')
-  }
-
 
   var numImages = $('.img').length;
   var previousImage = numImages;
@@ -76,6 +68,9 @@ initCarousel = function(){
   var sliderWidth = getSliderWidth();
   sizeImages();
 
+  if(numImages > 1){
+    $('.increment').css('opacity',.5);
+  }
 
   var resetImages = function(){
     //move images off canvas
@@ -187,7 +182,6 @@ function getColor(value){
           paletteArray.push(data[i].colors)
          }
       }
-      clearTimeout(colorRequestTimeout);
       displayData(paletteArray);
       initCarousel();
     }
