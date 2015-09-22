@@ -28,14 +28,35 @@ html {
 
 header{
   margin: 0;
-  padding:0;
+  padding:20px;
   height: 60px;
   width: 100%;
   background-color: white;
   border-bottom: 1px solid #D8D8D8;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   z-index:999;
+  color: #777;
+  font-weight: 700;
 }
+
+a {
+  color: #0060B6;
+  text-decoration: none;
+  float:right;
+  margin-right:10%;
+  font-size:18px;
+  margin-top:-20px
+}
+
+a:hover {
+  color:red;
+  text-decoration:none;
+  cursor:pointer;
+}
+
+h3 { margin-left: 5% }
+
+p{ padding:10px;}
 
 input{
   -webkit-appearance: none;
@@ -69,9 +90,9 @@ button:focus {outline:0;}
   margin:0 auto;
   text-align: center;
   padding-top: 40px;
-  padding-bottom: 120px;
+  padding-bottom: 60px;
   margin-top: 50px;
-  margin-bottom: 200px;
+  margin-bottom: 60px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
@@ -248,7 +269,7 @@ div>form{
 }
 
 
-@media(max-width: 450px){
+@media(max-width: 500px){
 
  #colorvalue{
   width: 30%;
@@ -261,8 +282,22 @@ div>form{
  .color-overlay>p{
   display:none;
  }
+
+ header *{
+  font-size: 16px;
+  margin-right: 0px;
+  margin-left: 0px;
+ }
+
+
+header a{
+  margin-right: 0px
 }
 
+header h3{
+  margin-left: 0px
+ }
+}
 
 
 

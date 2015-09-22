@@ -2,7 +2,7 @@
 $(document).ready(function(){
   init();
   resizeSliderWidth();
-  $('.flash').fadeOut(8000);
+  $('.flash').fadeOut(30000);
 
 });
 
@@ -15,7 +15,7 @@ function init(){
     if(currentSearch === ''){
       $('input[type=text]').attr('placeholder','Please enter a valid search').focus();
     }else{
-      $('input[type=text]').attr('placeholder','Enter a hue or a hex number')
+      $('input[type=text]').attr('placeholder','Enter a hue or hex value')
     }
     getColor(currentSearch);
     $('#colorvalue').val('');
